@@ -1,9 +1,22 @@
 import os
 import shutil
+import logging
 from config import DOWNLOADS_PATH, CATEGORIAS
 
-# Carpetas que crea el script → no tocar
-CARPETAS_SISTEMA = set(CATEGORIAS.values()) | {"Others"}
+# Carpetas que crea el script
+CARPETAS_SISTEMA = set(CATEGORIAS.values()) | {"Otros"}
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_PATH = os.path.join(BASE_DIR, "logs", "organizer.log")
+os.makedirs(os.path.join(BASE_DIR, "logs"), exist_ok=True)
+
+
+logging.basicConfig(
+    filename=LOG_PATH,
+    level= logging.INFO,
+    format="%(asctime)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
 def organize():
     for file in os.listdir(DOWNLOADS_PATH):
@@ -20,17 +33,21 @@ def organize():
         _, extension = os.path.splitext(file)
         extension = extension.lower()
 
-        folder = CATEGORIAS.get(extension, "Others")
+        folder = CATEGORIAS.get(extension, "Otros")
 
         destination = os.path.join(DOWNLOADS_PATH, folder)
         os.makedirs(destination, exist_ok=True)
 
         try:
             shutil.move(file_path, os.path.join(destination, file))
-            print(f"OK {file} → {folder}/")
+            message = f"{file} → {folder}/"
+            print(f"OK {message}")
+            logging.info(message)
         except PermissionError:
             print(f"NOT OK {file} está en uso, se omite.")
+            logging.warning(f"{file} en uso, omitido.")
         except FileNotFoundError:
             print(f"NOT OK {file} no encontrado, se omite.")
+            logging.warning(f"{file} no encontrado, omitido.")
 
 organize()
