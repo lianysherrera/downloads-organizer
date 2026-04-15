@@ -7,20 +7,21 @@ load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 DOWNLOADS_PATH = os.getenv("DOWNLOADS_PATH") or str(Path.home() / "Downloads")
 
 CATEGORIAS = {
-    ".jpg": "Images",
-    ".jpeg": "Images",
-    ".png": "Images",
-    ".gif": "Images",
-    ".svg": "Images",
-    ".webp": "Images",
+    ".jpg": "Imagenes",
+    ".jpeg": "Imagenes",
+    ".png": "Imagenes",
+    ".gif": "Imagenes",
+    ".svg": "Imagenes",
+    ".webp": "Imagenes",
+    ".avif": "Imagenes",
 
     ".pdf": "PDFs",
-    ".doc": "Documents",
-    ".docx": "Documents",
-    ".md": "Documents",
-    ".txt": "Documents",
-    ".ppt": "Documents",
-    ".pptx": "Documents",
+    ".doc": "Documentos",
+    ".docx": "Documentos",
+    ".md": "Documentos",
+    ".txt": "Documentos",
+    ".ppt": "Documentos",
+    ".pptx": "Documentos",
 
     ".xls": "Excel",
     ".xlsx": "Excel",
@@ -30,14 +31,19 @@ CATEGORIAS = {
     ".mov": "Videos",
     ".avi": "Videos",
 
-    ".mp3": "Music",
-    ".wav": "Music",
+    ".mp3": "Musica",
+    ".wav": "Musica",
 
-    ".zip": "Compressed",
-    ".rar": "Compressed",
-    ".7z": "Compressed",
+    ".zip": "Comprimidos",
+    ".rar": "Comprimidos",
+    ".7z": "Comprimidos",
 
-    ".exe": "Programs",
-    ".msi": "Programs",
-    ".dmg": "Programs",
+    ".exe": "Programas",
+    ".msi": "Programas",
+    ".dmg": "Programas",
+
+    ".po": "i18n",
+    ".mo": "i18n",
+
+    ".ova": "MaquinaVirtual",
 }
