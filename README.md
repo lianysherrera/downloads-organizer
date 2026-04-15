@@ -7,17 +7,21 @@ Herramienta en Python que vigila tu carpeta de descargas en tiempo real y mueve 
 - Detecta archivos en tu carpeta de Descargas
 - Los mueve automáticamente a subcarpetas según su extensión:
 
+
 | Extensiones | Carpeta |
 |---|---|
-| `.jpg` `.jpeg` `.png` `.gif` `.svg` `.webp` | `Images` |
+| `.jpg` `.jpeg` `.png` `.gif` `.svg` `.webp` `.avif` | `Imagenes` |
 | `.pdf` | `PDFs` |
-| `.doc` `.docx` `.txt` `.md` `.ppt` `.pptx` | `Documents` |
+| `.doc` `.docx` `.txt` `.md` `.ppt` `.pptx` | `Documentos` |
 | `.xls` `.xlsx` `.csv` | `Excel` |
 | `.mp4` `.mov` `.avi` | `Videos` |
-| `.mp3` `.wav` | `Music` |
-| `.zip` `.rar` `.7z` | `Compressed` |
-| `.exe` `.msi` `.dmg` | `Programs` |
-| cualquier otra | `Others` |
+| `.mp3` `.wav` | `Musica` |
+| `.zip` `.rar` `.7z` | `Comprimidos` |
+| `.exe` `.msi` `.dmg` | `Programas` |
+| `.po` `.mo` | `i18n` |
+| `.ova` | `MaquinaVirtual` |
+| cualquier otra | `Otros` |
+
 
 ## Instalación
 
