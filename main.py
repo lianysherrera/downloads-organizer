@@ -18,6 +18,16 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
+def unique_name(destination, filename):
+    final_path = os.path.join(destination, filename)
+    if not os.path.exists(final_path):
+        return final_path
+    name, ext = os.path.splitext(filename)
+    counter = 1
+    while os.path.exists(os.path.join(destination, f"{name}({counter}){ext}")):
+        counter += 1
+    return os.path.join(destination, f"{name}({counter}){ext}")
+
 def organize():
     for file in os.listdir(DOWNLOADS_PATH):
         file_path = os.path.join(DOWNLOADS_PATH, file)
@@ -39,7 +49,8 @@ def organize():
         os.makedirs(destination, exist_ok=True)
 
         try:
-            shutil.move(file_path, os.path.join(destination, file))
+            final_path = unique_name(destination, file)
+            shutil.move(file_path, final_path)
             message = f"{file} → {folder}/"
             print(f"OK {message}")
             logging.info(message)
