@@ -10,16 +10,21 @@ Herramienta en Python que vigila tu carpeta de descargas en tiempo real y mueve 
 
 | Extensiones | Carpeta |
 |---|---|
-| `.jpg` `.jpeg` `.png` `.gif` `.svg` `.webp` `.avif` | `Imagenes` |
-| `.pdf` | `PDFs` |
-| `.doc` `.docx` `.txt` `.md` `.ppt` `.pptx` | `Documentos` |
-| `.xls` `.xlsx` `.csv` | `Excel` |
-| `.mp4` `.mov` `.avi` | `Videos` |
-| `.mp3` `.wav` | `Musica` |
-| `.zip` `.rar` `.7z` | `Comprimidos` |
-| `.exe` `.msi` `.dmg` | `Programas` |
+| `.jpg` `.jpeg` `.png` `.gif` `.svg` `.webp` `.avif` `.bmp` `.tiff` `.ico` `.heic` `.raw` | `Imagenes` |
+| `.pdf` `.xps` | `PDFs` |
+| `.doc` `.docx` `.txt` `.md` `.ppt` `.pptx` `.odt` `.rtf` `.epub` `.pages` | `Documentos` |
+| `.xls` `.xlsx` `.csv` `.ods` | `Excel` |
+| `.mp4` `.mov` `.avi` `.mkv` `.wmv` `.flv` `.webm` | `Videos` |
+| `.mp3` `.wav` `.flac` `.aac` `.ogg` `.wma` `.m4a` | `Musica` |
+| `.zip` `.rar` `.7z` `.tar` `.gz` `.bz2` `.xz` `.iso` | `Comprimidos` |
+| `.exe` `.msi` `.dmg` `.deb` `.rpm` `.appimage` `.apk` `.msix` | `Programas` |
 | `.po` `.mo` | `i18n` |
 | `.ova` | `MaquinaVirtual` |
+| `.py` `.js` `.ts` `.java` `.cpp` `.c` `.html` `.css` `.json` `.xml` `.yaml` `.sql` | `Codigo` |
+| `.ttf` `.otf` `.woff` `.woff2` | `Fuentes` |
+| `.stl` `.obj` `.blend` `.fbx` | `3D` |
+| `.torrent` | `Torrents` |
+| `.db` `.sqlite` `.bak` | `BaseDatos` |
 | cualquier otra | `Otros` |
 
 
