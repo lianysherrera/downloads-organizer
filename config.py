@@ -8,111 +8,29 @@ DOWNLOADS_PATH = os.getenv("DOWNLOADS_PATH") or str(Path.home() / "Downloads")
 
 # Descargas que todavía no han terminado (Chrome, Edge, Firefox, Safari...)
 EXTENSIONES_IGNORADAS = {".crdownload", ".part", ".partial", ".download", ".tmp"}
-
 # Archivos del sistema que no se deben mover
 ARCHIVOS_IGNORADOS = {"desktop.ini", "thumbs.db"}
-
 # Prefijos de archivos ocultos y de bloqueo de Office (~$archivo.docx)
 PREFIJOS_IGNORADOS = (".", "~$")
 
-CATEGORIAS = {
-    ".jpg": "Imagenes",
-    ".jpeg": "Imagenes",
-    ".png": "Imagenes",
-    ".gif": "Imagenes",
-    ".svg": "Imagenes",
-    ".webp": "Imagenes",
-    ".avif": "Imagenes",
-    ".bmp": "Imagenes",
-    ".tiff": "Imagenes",
-    ".ico": "Imagenes",
-    ".heic": "Imagenes",
-    ".raw": "Imagenes",
-
-    ".pdf": "PDFs",
-    ".xps": "PDFs",
-
-    ".doc": "Documentos",
-    ".docx": "Documentos",
-    ".md": "Documentos",
-    ".txt": "Documentos",
-    ".ppt": "Documentos",
-    ".pptx": "Documentos",
-    ".odt": "Documentos",
-    ".rtf": "Documentos",
-    ".epub": "Documentos",
-    ".pages": "Documentos",
-
-    ".xls": "Excel",
-    ".xlsx": "Excel",
-    ".csv": "Excel",
-    ".ods": "Excel",
-
-    ".mp4": "Videos",
-    ".mov": "Videos",
-    ".avi": "Videos",
-    ".mkv": "Videos",
-    ".wmv": "Videos",
-    ".flv": "Videos",
-    ".webm": "Videos",
-
-    ".mp3": "Musica",
-    ".wav": "Musica",
-    ".flac": "Musica",
-    ".aac": "Musica",
-    ".ogg": "Musica",
-    ".wma": "Musica",
-    ".m4a": "Musica",
-
-    ".zip": "Comprimidos",
-    ".rar": "Comprimidos",
-    ".7z": "Comprimidos",
-    ".tar": "Comprimidos",
-    ".gz": "Comprimidos",
-    ".bz2": "Comprimidos",
-    ".xz": "Comprimidos",
-    ".iso": "Comprimidos",
-
-    ".exe": "Programas",
-    ".msi": "Programas",
-    ".dmg": "Programas",
-    ".deb": "Programas",
-    ".rpm": "Programas",
-    ".appimage": "Programas",
-    ".apk": "Programas",
-    ".msix": "Programas",
-
-    ".po": "i18n",
-    ".mo": "i18n",
-
-    ".ova": "MaquinaVirtual",
-
-    ".py": "Codigo",
-    ".js": "Codigo",
-    ".ts": "Codigo",
-    ".java": "Codigo",
-    ".cpp": "Codigo",
-    ".c": "Codigo",
-    ".html": "Codigo",
-    ".css": "Codigo",
-    ".json": "Codigo",
-    ".xml": "Codigo",
-    ".yaml": "Codigo",
-    ".sql": "Codigo",
-
-    ".ttf": "Fuentes",
-    ".otf": "Fuentes",
-    ".woff": "Fuentes",
-    ".woff2": "Fuentes",
-
-    ".stl": "3D",
-    ".obj": "3D",
-    ".blend": "3D",
-    ".fbx": "3D",
-
-    ".torrent": "Torrents",
-
-    ".db": "BaseDatos",
-    ".sqlite": "BaseDatos",
-    ".bak": "BaseDatos",
+# Carpeta de destino -> extensiones que van a ella
+GRUPOS = {
+    "Imagenes": [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".avif", ".bmp", ".tiff", ".ico", ".heic", ".raw"],
+    "PDFs": [".pdf", ".xps"],
+    "Documentos": [".doc", ".docx", ".md", ".txt", ".ppt", ".pptx", ".odt", ".rtf", ".epub", ".pages"],
+    "Excel": [".xls", ".xlsx", ".csv", ".ods"],
+    "Videos": [".mp4", ".mov", ".avi", ".mkv", ".wmv", ".flv", ".webm"],
+    "Musica": [".mp3", ".wav", ".flac", ".aac", ".ogg", ".wma", ".m4a"],
+    "Comprimidos": [".zip", ".rar", ".7z", ".tar", ".gz", ".bz2", ".xz", ".iso"],
+    "Programas": [".exe", ".msi", ".dmg", ".deb", ".rpm", ".appimage", ".apk", ".msix"],
+    "i18n": [".po", ".mo"],
+    "MaquinaVirtual": [".ova"],
+    "Codigo": [".py", ".js", ".ts", ".java", ".cpp", ".c", ".html", ".css", ".json", ".xml", ".yaml", ".sql"],
+    "Fuentes": [".ttf", ".otf", ".woff", ".woff2"],
+    "3D": [".stl", ".obj", ".blend", ".fbx"],
+    "Torrents": [".torrent"],
+    "BaseDatos": [".db", ".sqlite", ".bak"],
 }
+
+# Extensión -> carpeta de destino (lo que usa main.py)
+CATEGORIAS = {ext: carpeta for carpeta, extensiones in GRUPOS.items() for ext in extensiones}
