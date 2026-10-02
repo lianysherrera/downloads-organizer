@@ -13,6 +13,7 @@ os.makedirs(os.path.join(BASE_DIR, "logs"), exist_ok=True)
 
 logging.basicConfig(
     filename=LOG_PATH,
+    encoding="utf-8",
     level= logging.INFO,
     format="%(asctime)s - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S"
