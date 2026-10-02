@@ -4,17 +4,17 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
-DOWNLOADS_PATH = os.getenv("DOWNLOADS_PATH") or str(Path.home() / "Downloads")
+DOWNLOADS_PATH = Path(os.getenv("DOWNLOADS_PATH") or Path.home() / "Downloads")
 
 # Descargas que todavía no han terminado (Chrome, Edge, Firefox, Safari...)
-EXTENSIONES_IGNORADAS = {".crdownload", ".part", ".partial", ".download", ".tmp"}
+IGNORED_EXTENSIONS = {".crdownload", ".part", ".partial", ".download", ".tmp"}
 # Archivos del sistema que no se deben mover
-ARCHIVOS_IGNORADOS = {"desktop.ini", "thumbs.db"}
+IGNORED_FILES = {"desktop.ini", "thumbs.db"}
 # Prefijos de archivos ocultos y de bloqueo de Office (~$archivo.docx)
-PREFIJOS_IGNORADOS = (".", "~$")
+IGNORED_PREFIXES = (".", "~$")
 
 # Carpeta de destino -> extensiones que van a ella
-GRUPOS = {
+GROUPS = {
     "Imagenes": [".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".avif", ".bmp", ".tiff", ".ico", ".heic", ".raw"],
     "PDFs": [".pdf", ".xps"],
     "Documentos": [".doc", ".docx", ".md", ".txt", ".ppt", ".pptx", ".odt", ".rtf", ".epub", ".pages"],
@@ -33,4 +33,4 @@ GRUPOS = {
 }
 
 # Extensión -> carpeta de destino (lo que usa main.py)
-CATEGORIAS = {ext: carpeta for carpeta, extensiones in GRUPOS.items() for ext in extensiones}
+CATEGORIES = {ext: folder for folder, extensions in GROUPS.items() for ext in extensions}
