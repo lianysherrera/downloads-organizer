@@ -6,9 +6,6 @@ from config import (
     EXTENSIONES_IGNORADAS, ARCHIVOS_IGNORADOS, PREFIJOS_IGNORADOS,
 )
 
-# Carpetas que crea el script
-CARPETAS_SISTEMA = set(CATEGORIAS.values()) | {"Otros"}
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_PATH = os.path.join(BASE_DIR, "logs", "organizer.log")
 os.makedirs(os.path.join(BASE_DIR, "logs"), exist_ok=True)
@@ -38,10 +35,6 @@ def organize():
 
         # Ignorar carpetas (incluidas las del script)
         if os.path.isdir(file_path):
-            continue
-
-        # Ignorar carpetas del sistema
-        if file in CARPETAS_SISTEMA:
             continue
 
         _, extension = os.path.splitext(file)
