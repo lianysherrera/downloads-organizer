@@ -1,5 +1,6 @@
 import shutil
 import logging
+from collections import Counter
 from pathlib import Path
 from config import (
     DOWNLOADS_PATH, CATEGORIES,
@@ -30,7 +31,24 @@ def unique_name(destination, filename):
         counter += 1
     return destination / f"{name}({counter}){ext}"
 
+def print_summary(moved, skipped):
+    total = sum(moved.values())
+    if total == 0 and skipped == 0:
+        summary = "No había archivos que organizar."
+    else:
+        plural = "s" if total != 1 else ""
+        summary = f"{total} archivo{plural} movido{plural}"
+        if moved:
+            detail = ", ".join(f"{count} {folder}" for folder, count in moved.most_common())
+            summary += f" ({detail})"
+        summary += f", {skipped} omitido{'s' if skipped != 1 else ''}"
+    print()
+    print(summary)
+    logging.info(f"Resumen: {summary}")
+
 def organize():
+    moved = Counter()
+    skipped = 0
     for file in DOWNLOADS_PATH.iterdir():
         name = file.name
 
@@ -57,11 +75,16 @@ def organize():
             message = f"{name} → {folder}/"
             print(f"OK {message}")
             logging.info(message)
+            moved[folder] += 1
         except PermissionError:
             print(f"NOT OK {name} está en uso, se omite.")
             logging.warning(f"{name} en uso, omitido.")
+            skipped += 1
         except FileNotFoundError:
             print(f"NOT OK {name} no encontrado, se omite.")
             logging.warning(f"{name} no encontrado, omitido.")
+            skipped += 1
+
+    print_summary(moved, skipped)
 
 organize()
