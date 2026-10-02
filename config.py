@@ -6,6 +6,15 @@ load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
 DOWNLOADS_PATH = os.getenv("DOWNLOADS_PATH") or str(Path.home() / "Downloads")
 
+# Descargas que todavía no han terminado (Chrome, Edge, Firefox, Safari...)
+EXTENSIONES_IGNORADAS = {".crdownload", ".part", ".partial", ".download", ".tmp"}
+
+# Archivos del sistema que no se deben mover
+ARCHIVOS_IGNORADOS = {"desktop.ini", "thumbs.db"}
+
+# Prefijos de archivos ocultos y de bloqueo de Office (~$archivo.docx)
+PREFIJOS_IGNORADOS = (".", "~$")
+
 CATEGORIAS = {
     ".jpg": "Imagenes",
     ".jpeg": "Imagenes",

@@ -1,7 +1,10 @@
 import os
 import shutil
 import logging
-from config import DOWNLOADS_PATH, CATEGORIAS
+from config import (
+    DOWNLOADS_PATH, CATEGORIAS,
+    EXTENSIONES_IGNORADAS, ARCHIVOS_IGNORADOS, PREFIJOS_IGNORADOS,
+)
 
 # Carpetas que crea el script
 CARPETAS_SISTEMA = set(CATEGORIAS.values()) | {"Otros"}
@@ -43,6 +46,12 @@ def organize():
 
         _, extension = os.path.splitext(file)
         extension = extension.lower()
+
+        # Ignorar descargas a medias, archivos del sistema y de bloqueo
+        if (extension in EXTENSIONES_IGNORADAS
+                or file.lower() in ARCHIVOS_IGNORADOS
+                or file.startswith(PREFIJOS_IGNORADOS)):
+            continue
 
         folder = CATEGORIAS.get(extension, "Otros")
 
