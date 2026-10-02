@@ -1,10 +1,10 @@
 # Organizador de Descargas
 
-Herramienta en Python que vigila tu carpeta de descargas en tiempo real y mueve cada archivo a su carpeta correspondiente según la extensión: imágenes, documentos, vídeos, música y más.
+Herramienta en Python que organiza tu carpeta de Descargas moviendo cada archivo a su carpeta correspondiente según la extensión: imágenes, documentos, vídeos, música y más.
 
 ## ¿Qué hace?
 
-- Detecta archivos en tu carpeta de Descargas
+- Revisa los archivos de tu carpeta de Descargas cada vez que lo ejecutas
 - Los mueve automáticamente a subcarpetas según su extensión:
 
 
@@ -26,6 +26,8 @@ Herramienta en Python que vigila tu carpeta de descargas en tiempo real y mueve 
 | `.torrent` | `Torrents` |
 | `.db` `.sqlite` `.bak` | `BaseDatos` |
 | cualquier otra | `Otros` |
+
+No mueve las descargas que aún no han terminado (`.crdownload`, `.part`, `.tmp`...), los archivos del sistema (`desktop.ini`, `Thumbs.db`), los ocultos ni los de bloqueo de Office (`~$archivo.docx`). Puedes ajustar estas exclusiones en `config.py`.
 
 
 ## Instalación
