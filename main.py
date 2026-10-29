@@ -84,6 +84,10 @@ def organize():
             print(f"NOT OK {name} no encontrado, se omite.")
             logging.warning(f"{name} no encontrado, omitido.")
             skipped += 1
+        except OSError as error:
+            print(f"NOT OK {name} no se pudo mover ({error}), se omite.")
+            logging.error(f"{name} no se pudo mover: {error}")
+            skipped += 1
 
     print_summary(moved, skipped)
 
