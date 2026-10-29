@@ -47,6 +47,11 @@ def print_summary(moved, skipped):
     logging.info(f"Resumen: {summary}")
 
 def organize():
+    if not DOWNLOADS_PATH.is_dir():
+        print(f"NOT OK La carpeta {DOWNLOADS_PATH} no existe. Revisa DOWNLOADS_PATH en el archivo .env.")
+        logging.error(f"Carpeta de descargas no encontrada: {DOWNLOADS_PATH}")
+        return
+
     moved = Counter()
     skipped = 0
     for file in DOWNLOADS_PATH.iterdir():
