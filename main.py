@@ -72,6 +72,14 @@ def organize():
         folder = CATEGORIES.get(extension, "Otros")
 
         destination = DOWNLOADS_PATH / folder
+
+        # Un archivo con el mismo nombre que la carpeta impide crearla
+        if destination.exists() and not destination.is_dir():
+            print(f"NOT OK {name} no se puede mover: ya existe un archivo llamado {folder}, se omite.")
+            logging.warning(f"{name} omitido: {folder} es un archivo, no una carpeta.")
+            skipped += 1
+            continue
+
         destination.mkdir(exist_ok=True)
 
         try:
